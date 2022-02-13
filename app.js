@@ -7,11 +7,28 @@ function getPin() {
     return getPin();
   }
 }
+
+function verifyPin() {
+  const pin = document.getElementById("display-pin").value;
+  const typedNumbers = document.getElementById("typed-numbers").value;
+  const pinMatched = document.getElementById("pin-success");
+  const pinNotMatched = document.getElementById("pin-fail");
+  if (pin == typedNumbers) {
+    pinMatched.style.display = "block";
+    pinNotMatched.style.display = "none";
+  } else {
+    pinNotMatched.style.display = "block";
+    pinMatched.style.display = "none";
+  }
+}
+
+// random pin generator handler
 document.getElementById("generate-pin").addEventListener("click", function () {
   const pin = getPin();
   document.getElementById("display-pin").value = pin;
 });
 
+// calculator handler
 document.getElementById("key-pad").addEventListener("click", function (event) {
   const numbers = event.target.innerText;
   const calcInput = document.getElementById("typed-numbers");
